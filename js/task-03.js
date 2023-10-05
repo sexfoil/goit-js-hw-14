@@ -18,16 +18,15 @@ galleryList.style.listStyle = "none";
 galleryList.style.display = "flex";
 galleryList.style.flexDirection = "column";
 
-const galleryListHTML = images.map(
-  ({ url, alt }) => {
-    const img = document.createElement("img");
-    img.setAttribute("src", url);
-    img.setAttribute("alt", alt);
-    img.style.width = "50%";
-    img.style.border = "2px solid tomato";
-    img.style.borderRadius = "8px";
-    return `<li>${img.outerHTML}</li>`
-  }
-).join(" ");
+const galleryListHTML = images.map(({ url, alt }) => {
+  return `<li><img class="task-gallery" src="${url}" alt="${alt}" /></li>`
+}).join(" ");
 
 document.querySelector(".gallery").insertAdjacentHTML("afterbegin", galleryListHTML);
+
+const imagesClassList = document.querySelectorAll(".task-gallery");
+imagesClassList.forEach(img => {
+  img.style.width = "50%";
+  img.style.border = "2px solid tomato";
+  img.style.borderRadius = "8px";
+});
